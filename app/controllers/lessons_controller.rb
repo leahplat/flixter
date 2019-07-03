@@ -1,6 +1,6 @@
 class LessonsController < ApplicationController
     before_action :authenticate_user!
-    before_action :require_enrolled_for_current_course
+    # before_action :require_enrolled_for_current_course
     before_action :require_authorized_for_lessons, only: [:show]
     
     def show
