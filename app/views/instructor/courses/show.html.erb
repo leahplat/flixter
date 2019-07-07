@@ -1,8 +1,9 @@
+<div class="modal-footer">
 <script>
 $('.new-lesson-button').click(function( event ) {
   var lessonUrl = $( event.target).data('lesson-url');
   $('#newLessonForm').attr('action', lessonUrl);
-}); 
+});
 </script>
 
 <script>
@@ -66,11 +67,10 @@ $('.new-lesson-button').click(function( event ) {
             </div>
           </div>
           <div class="col-1">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary btn-md float-right new-lesson-button" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section) %>">
-            New Lesson...
-            </button>
-          </div>
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg float-right new-lesson-button" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section) %>">
+  New Lesson...
+</button>           </div>
           <br class="clr" />
           <br class="clr" />
         </div>
@@ -129,12 +129,12 @@ $('.new-lesson-button').click(function( event ) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="newLessonModal">Add a New Lesson</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
+          <span aria-hidden="true">×</span>
         </button>
+        <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
       </div>
-      <%= simple_form_for @lesson, url: instructor_course_sections_path(current_course)  do |f| %>
+      <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm' } do |f| %>
         <div class="modal-body">
           <%= f.input :title %>
           <%= f.input :subtitle %>
@@ -142,9 +142,11 @@ $('.new-lesson-button').click(function( event ) {
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-          <%= f.submit "Add Lesson", class: 'btn btn-primary' %>
+          <%= f.submit "Add the lesson", class: 'btn btn-primary' %>
         </div>
       <% end %>
     </div>
   </div>
 </div>
+
+<!--  -->

@@ -1,4 +1,4 @@
-class Instructor::SectionsController < ApplicationController
+ class Instructor::SectionsController < ApplicationController
   before_action :authenticate_user!
   before_action :require_authorized_for_current_course, only: [:create]
   before_action :require_authorized_for_current_section, only: [:update]
