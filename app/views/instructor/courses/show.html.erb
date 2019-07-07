@@ -1,26 +1,23 @@
 <div class="modal-footer">
 <script>
-$('.new-lesson-button').click(function( event ) {
-  var lessonUrl = $( event.target).data('lesson-url');
-  $('#newLessonForm').attr('action', lessonUrl);
-});
-</script>
-
-<script>
+  $(function() {
+    $('.new-lesson-button').click(function( event ) {
+      var lessonURL=  $(event.target).data('lesson-url');
+      $('#newLessonForm').attr('action', lessonURL);
+    });
+  });
   $(function() {
     $('.lessons').sortable({
       update: function( event, ui ) {
         $.ajax({
           type: 'PUT',
           url: ui.item.data('update-url'),
-          dataType: 'json',
-          data: { lesson: { row_order_position: ui.item.index() } }
+          dataType: 'json', 
+          data: { lesson: { row_order_position: ui.item.index() }}
         });
       }
     });
-   });
-</script>
-<script>
+  });
   $(function() {
     $('.sections').sortable({
       update: function( event, ui ) {
@@ -28,13 +25,12 @@ $('.new-lesson-button').click(function( event ) {
           type: 'PUT',
           url: ui.item.data('update-url'),
           dataType: 'json',
-          data: { section: { row_order_position: ui.item.index() } }
+          data: { section: { row_order_position: ui.item.index() }}
         });
       }
     });
-   });
-  </script>
-
+  });
+</script>
 
 <br />
 <div class="booyah-box col-10 offset-1">
@@ -134,7 +130,7 @@ $('.new-lesson-button').click(function( event ) {
         </button>
         <h4 class="modal-title" id="newLessonModalLabel">Add a new lesson</h4>
       </div>
-      <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm' } do |f| %>
+      <%= simple_form_for @lesson, url: '#', html: {id: 'newLessonForm' } do |f| %>
         <div class="modal-body">
           <%= f.input :title %>
           <%= f.input :subtitle %>
